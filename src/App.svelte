@@ -7,7 +7,7 @@
 
   <div class="card">
     <ContextMenu>
-      <div class="card">
+      <div class="demo-card">
         <h1>Foo Bar Baz</h1>
         <div>foo bar baz quux</div>
       </div>
@@ -24,8 +24,9 @@
 </main>
 
 <style>
-  .card {
+  .demo-card {
     width: 275px;
     height: 350px;
+    outline: 1px solid black;
   }
 </style>
