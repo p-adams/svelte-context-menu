@@ -28,5 +28,7 @@
     width: 275px;
     height: 350px;
     outline: 1px solid black;
+    background-color: white;
+    cursor: pointer;
   }
 </style>
