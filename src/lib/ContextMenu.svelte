@@ -6,12 +6,23 @@
   let widthHeight: { width?: number; height?: number } | null = null;
   let showMenuButton: boolean = false;
   export let showMenuDialog: boolean = false;
+  export let dialogContentItems: any[] = [];
+
   onMount(() => {
     widthHeight = {
       width: menu?.children[0].clientWidth,
       height: menu?.children[0].clientHeight,
     };
   });
+
+  function dialogClick(
+    e: MouseEvent & {
+      currentTarget: EventTarget & HTMLUListElement;
+    }
+  ) {
+    const target = e.target as HTMLElement;
+    dispatch("selectMenuItem", { item: target?.textContent });
+  }
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -33,8 +44,16 @@
     </slot>
   {/if}
 
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <dialog open={showMenuDialog}>
-    <slot name="dialog-content" />
+    <slot name="dialog-content">
+      <ul class="dialog-content-items" on:click={(e) => dialogClick(e)}>
+        {#each dialogContentItems as item}
+          <li class="dialog-content-item">{item}</li>
+        {/each}
+      </ul>
+    </slot>
     <button on:click={() => dispatch("closeDialog")}>X</button>
   </dialog>
   <div
@@ -66,5 +85,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .dialog-content-item {
+    cursor: pointer;
+  }
+  .dialog-content-item:hover {
+    background-color: lightgray;
   }
 </style>
