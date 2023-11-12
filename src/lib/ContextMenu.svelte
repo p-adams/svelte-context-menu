@@ -24,15 +24,19 @@
 >
   {#if showMenuButton}
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div
-      class="menu-btn"
-      on:click={() => openMenu()}
-      on:keypress={() => openMenu()}
-    >
-      ...
-    </div>
+    <slot name="menu-btn">
+      <div
+        class="menu-btn"
+        on:click={() => openMenu()}
+        on:keypress={() => openMenu()}
+      >
+        ...
+      </div>
+    </slot>
   {/if}
+
   <dialog open={showMenuDialog}>
+    <slot name="dialog-content" />
     <button on:click={() => (showMenuDialog = false)}>X</button>
   </dialog>
   <div
@@ -41,7 +45,7 @@
     style:width={`${widthHeight?.width && widthHeight.width + 50}px`}
     style:height={`${widthHeight?.height && widthHeight.height + 50}px`}
   >
-    <slot />
+    <slot name="content" />
   </div>
 </div>
 

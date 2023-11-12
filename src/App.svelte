@@ -7,9 +7,16 @@
 
   <div class="card">
     <ContextMenu>
-      <div class="demo-card">
+      <div class="demo-card" slot="content">
         <h1>Foo Bar Baz</h1>
         <div>foo bar baz quux</div>
+      </div>
+      <div slot="dialog-content">
+        <ul>
+          <li>A</li>
+          <li>B</li>
+          <li>C</li>
+        </ul>
       </div>
     </ContextMenu>
   </div>
