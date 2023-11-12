@@ -54,7 +54,7 @@
         {/each}
       </ul>
     </slot>
-    <button on:click={() => dispatch("closeDialog")}>X</button>
+    <button on:click={() => dispatch("closeDialog")}>close</button>
   </dialog>
   <div
     bind:this={menu}
@@ -85,6 +85,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .dialog-content-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
   }
   .dialog-content-item {
     cursor: pointer;
