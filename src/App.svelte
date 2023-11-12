@@ -21,7 +21,7 @@
       on:closeDialog={() => (
         (showMenuDialog = false), (selectedMenuItem = null)
       )}
-      on:openDialog={() => (showMenuDialog = true)}
+      on:openDialog={() => (showMenuDialog = !showMenuDialog)}
       on:selectMenuItem={(e) => (
         (selectedMenuItem = e.detail.item), (showMenuDialog = false)
       )}
